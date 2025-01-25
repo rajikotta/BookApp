@@ -1,4 +1,4 @@
-package com.raji.bookapp.data.remote
+package com.raji.bookapp.data.remote.network
 
 import io.ktor.client.network.sockets.SocketTimeoutException
 import io.ktor.client.statement.HttpResponse
