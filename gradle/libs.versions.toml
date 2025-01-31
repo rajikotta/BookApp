@@ -21,7 +21,7 @@ koin = "4.0.0"
 koin-viewmodel="2.2.3"
 ktor = "3.0.0"
 coil3 = "3.0.0-rc02"
-ksp = "2.0.20-1.0.24"
+ksp = "2.1.0-1.0.29"
 sqlite = "2.5.0-alpha12"
 room = "2.7.0-alpha12"
 

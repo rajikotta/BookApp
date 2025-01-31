@@ -27,10 +27,10 @@ sealed interface DataError : Error {
     }
 }
 
-inline fun <D, E : Error> Result<D, E>.onSuccess(action: () -> Unit): Result<D, E> {
+inline fun <D, E : Error> Result<D, E>.onSuccess(action: (D) -> Unit): Result<D, E> {
     return when (this) {
         is Result.Success -> {
-            action()
+            action(data)
             this
         }
 
@@ -38,10 +38,10 @@ inline fun <D, E : Error> Result<D, E>.onSuccess(action: () -> Unit): Result<D, 
     }
 }
 
-inline fun <D, E : Error> Result<D, E>.onError(action: () -> Unit): Result<D, E> {
+inline fun <D, E : Error> Result<D, E>.onError(action: (E) -> Unit): Result<D, E> {
     return when (this) {
         is Result.NetworkError -> {
-            action()
+            action(error)
             this
         }
 
@@ -77,3 +77,5 @@ suspend inline fun <reified D> HttpResponse.toResult(): Result<D, DataError.Remo
         else -> Result.NetworkError(DataError.RemoteError.UNKNOWN)
     }
 }
+
+typealias EmptyResult<E> = Result<Unit, E>
